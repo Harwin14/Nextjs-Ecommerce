@@ -11,9 +11,9 @@ export default async function handle(req, res) {
         form.parse(req, (err, fields, files) => {
             if (err) throw err;
             resolve({ fields, files });
-        }); 
+        });
     });
-    console.log('length:', files.file.length); 
+    console.log('length:', files.file.length);
     const client = new S3Client({
       region: 'ap-southeast-1',
       credentials: {

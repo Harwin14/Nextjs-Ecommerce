@@ -13,14 +13,14 @@ export default async function handle(req, res) {
             resolve({ fields, files });
         }); 
     });
-    console.log('length:', files.file.length);
+    console.log('length:', files.file.length); 
     const client = new S3Client({
       region: 'ap-southeast-1',
       credentials: {
         accessKeyId: process.env.S3_ACCESS_KEY,
         secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
       }, 
-      
+
     });
     const links = [];
     for (const file of files.file) {

@@ -3,17 +3,16 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import fs from "fs";
 import mime from "mime-types";
 
-const bucketName = "nextjs-ecommerce-harwin";
+const bucketName = "harwin-nextjs-ecommerce";
 
 export default async function handle(req, res) {
     const form = new multiparty.Form();
     const { fields, files } = await new Promise((resolve, reject) => {
         form.parse(req, (err, fields, files) => {
-            if (err) throw err;
+            if (err) reject(err);
             resolve({ fields, files });
         });
     });
-    console.log("length:", files.file.length);
     const client = new S3Client({
         region: "ap-southeast-1",
         credentials: {

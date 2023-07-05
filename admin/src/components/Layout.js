@@ -28,7 +28,7 @@ export default function Layout({ children }) {
             <Nav />
             <div className="bg-white flex-grow mt-2 mr-2 mb-2 rounded-lg p-4">
                 {children}
-                <button className="bg-red-600 text-yellow-300 p-1 rounded-lg" onClick={() => signOut()}>Logout</button>
+               
             </div>
         </div>
     );

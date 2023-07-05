@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-img{
+img {
     max-height: 100%;
 }
 
 input,
-textarea {
+textarea,
+select {
     @apply border-2 border-gray-300 rounded-md px-1 w-full;
     @apply mb-2;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
     @apply border-blue-900;
 }
 
@@ -27,15 +29,14 @@ label {
     @apply bg-blue-900 text-white px-4 py-1 rounded-md;
 }
 .btn-default,
-.btn-red{
-    @apply px-4 py-1 rounded-md
+.btn-red {
+    @apply px-4 py-1 rounded-md;
 }
 .btn-red {
-    @apply bg-red-800 text-white ;
+    @apply bg-red-800 text-white;
 }
-.btn-default{
+.btn-default {
     @apply bg-gray-500 text-white;
-
 }
 table.basic {
     @apply w-full;

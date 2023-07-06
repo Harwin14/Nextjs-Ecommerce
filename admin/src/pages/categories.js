@@ -21,7 +21,14 @@ const Categories = ({ swal }) => {
 
     const saveCategory = async (e) => {
         e.preventDefault();
-        const data = { name, parentCategory };
+        const data = {
+            name,
+            parentCategory,
+            properties: properties.map((p) => ({
+                name: p.name,
+                values: p.values.split(","),
+            })),
+        };
 
         if (editedCategory) {
             data._id = editedCategory._id;
@@ -32,6 +39,7 @@ const Categories = ({ swal }) => {
         }
         setName("");
         setParentCategory("");
+        setProperties([]);
         fetchCategories();
     };
 
@@ -39,6 +47,12 @@ const Categories = ({ swal }) => {
         setEditedCategory(category);
         setName(category.name);
         setParentCategory(category.parent?._id);
+        setProperties(
+            category.properties.map(({ name, values }) => ({
+                name,
+                values: values.join(","),
+            }))
+        );
     };
 
     const deleteCategory = (category) => {
@@ -84,6 +98,15 @@ const Categories = ({ swal }) => {
             return properties;
         });
     };
+
+    const removeProperty = (indexToRemove) => {
+        setProperties((prev) => {
+            console.log(prev);
+            return [...prev].filter((p, pIndex) => {
+                return pIndex !== indexToRemove;
+            });
+        });
+    };
     return (
         <Layout>
             <h1>Categories</h1>
@@ -124,8 +147,9 @@ const Categories = ({ swal }) => {
                     </button>
                     {properties.length > 0 &&
                         properties.map((property, index) => (
-                            <div className="flex gap-1">
+                            <div className="flex gap-1 mb-2" key={index}>
                                 <input
+                                    className="mb-0"
                                     value={property.name}
                                     onChange={(e) =>
                                         handlePropertyNameChange(
@@ -138,6 +162,7 @@ const Categories = ({ swal }) => {
                                     placeholder="Property name (example: color"
                                 />
                                 <input
+                                    className="mb-0"
                                     onChange={(e) =>
                                         handlePropertyValuesChange(
                                             index,
@@ -149,45 +174,74 @@ const Categories = ({ swal }) => {
                                     type="text"
                                     placeholder="values, comma separated"
                                 />
+                                <button
+                                    className="btn-default"
+                                    onClick={() => removeProperty(index)}
+                                    type="button"
+                                >
+                                    Remove
+                                </button>
                             </div>
                         ))}
                 </div>
-                <button type="submit" className="btn-primary py-1">
-                    Save
-                </button>
+                <div className="flex gap-1">
+                    {editedCategory && (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setEditedCategory(null);
+                                setName("");
+                                setParentCategory("");
+                                setProperties([]);
+                            }}
+                            className="btn-default"
+                        >
+                            Cancel
+                        </button>
+                    )}
+                    <button type="submit" className="btn-primary py-1">
+                        Save
+                    </button>
+                </div>
             </form>
-            <table className="basic mt-4">
-                <thead>
-                    <tr>
-                        <td>Category name</td>
-                        <td>Parent category</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {categories.length > 0 &&
-                        categories.map((category, index) => (
-                            <tr key={index}>
-                                <td>{category.name}</td>
-                                <td>{category?.parent?.name}</td>
-                                <td>
-                                    <button
-                                        onClick={() => editCategory(category)}
-                                        className="btn-primary mr-1"
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => deleteCategory(category)}
-                                        className="btn-primary"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                </tbody>
-            </table>
+            {!editedCategory && (
+                <table className="basic mt-4">
+                    <thead>
+                        <tr>
+                            <td>Category name</td>
+                            <td>Parent category</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {categories.length > 0 &&
+                            categories.map((category, index) => (
+                                <tr key={index}>
+                                    <td>{category.name}</td>
+                                    <td>{category?.parent?.name}</td>
+                                    <td>
+                                        <button
+                                            onClick={() =>
+                                                editCategory(category)
+                                            }
+                                            className="btn-primary mr-1"
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            onClick={() =>
+                                                deleteCategory(category)
+                                            }
+                                            className="btn-primary"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            )}
         </Layout>
     );
 };

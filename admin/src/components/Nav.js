@@ -29,7 +29,7 @@ export default function Nav({ show }) {
           <Logo />
             </div>
             <nav className="flex flex-col gap-2">
-                <Link
+                <Link 
                     href={"/"}
                     className={pathname === "/" ? activeLink : inactiveLink}
                 >

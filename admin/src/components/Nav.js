@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Logo from "./Logo";
 
-export default function Nav({ show }) {
+export default function Nav() {
     const inactiveLink = "flex gap-1 p-1";
     const activeLink =
         inactiveLink +
@@ -20,20 +20,24 @@ export default function Nav({ show }) {
     return (
         <aside
             className={
-                 (show ? "left-0 bg-darkAbu" : "-left-full bg-abu") +
+                // (show ? "left-0 bg-darkAbu" : "-left-full bg-abu") +
                 " text-gray-500 p-4 pr-0 fixed w-full h-full md:static md:w-auto transition-all"
             }
         >
             <div className="mb-10 mr-4">
-
-          <Logo />
+                <Logo />
             </div>
             <nav className="flex flex-col gap-2">
-                <Link 
+                <Link
                     href={"/"}
                     className={pathname === "/" ? activeLink : inactiveLink}
                 >
-                  <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1 ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div
+                        className={
+                            // (show ? "bg-abu w-full" : "bg-abu") +
+                            "bg-abu flex gap-1 ml-[-2px] p-2 rounded-full w-[180px]"
+                        }
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -57,7 +61,12 @@ export default function Nav({ show }) {
                             : inactiveLink
                     }
                 >
-                    <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div
+                        className={
+                            // (show ? "bg-abu w-full" : "bg-abu") +
+                            "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"
+                        }
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -87,7 +96,12 @@ export default function Nav({ show }) {
                             : inactiveLink
                     }
                 >
-                 <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div
+                        className={
+                            // (show ? "bg-abu w-full" : "bg-abu") +
+                            "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"
+                        }
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -115,7 +129,12 @@ export default function Nav({ show }) {
                         pathname.includes("/orders") ? activeLink : inactiveLink
                     }
                 >
-                   <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div
+                        className={
+                            // (show ? "bg-abu w-full" : "bg-abu") +
+                            "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"
+                        }
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -145,7 +164,12 @@ export default function Nav({ show }) {
                             : inactiveLink
                     }
                 >
-                    <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div
+                        className={
+                            // (show ? "bg-abu w-full" : "bg-abu") +
+                            "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"
+                        }
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -172,7 +196,12 @@ export default function Nav({ show }) {
                         Settings
                     </div>
                 </Link>
-                <div className={ (show ? "bg-abu w-full" : "bg-abu") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                <div
+                    className={
+                        // (show ? "bg-abu w-full" : "bg-abu") +
+                        "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"
+                    }
+                >
                     <button className={inactiveLink} onClick={logout}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

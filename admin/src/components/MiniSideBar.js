@@ -20,8 +20,8 @@ const MiniSideBar = ({show}) => {
     };
   return (
     <aside
-            className={(show ? "hidden":"") +
-                "miniAside w-[48px]"
+            className={
+                "miniAside w-[50px] ml-2"
             }
         >
             <br />
@@ -34,7 +34,7 @@ const MiniSideBar = ({show}) => {
                     href={"/"}
                     className={pathname === "/" ? activeLink : inactiveLink}
                 >
-                  <div className={ (show ? "hidden":"") + " flex gap-1 ml-[-2px] p-2 rounded-full w-[180px] "}>
+                  <div className={ "bg-abu flex gap-1 ml-[2px] p-2 rounded-full w-[180px] "}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -57,7 +57,7 @@ const MiniSideBar = ({show}) => {
                             : inactiveLink
                     }
                 >
-                    <div className={ (show ? "hidden":"") + " flex gap-1  ml-[-2px] p-2 rounded-full "}>
+                    <div className={ "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full "}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -86,7 +86,7 @@ const MiniSideBar = ({show}) => {
                             : inactiveLink
                     }
                 >
-                 <div className={(show ? "hidden":"") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                 <div className={ "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -113,7 +113,7 @@ const MiniSideBar = ({show}) => {
                         pathname.includes("/orders") ? activeLink : inactiveLink
                     }
                 >
-                   <div className={ (show ? "hidden":"") + " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                   <div className={  "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -142,7 +142,7 @@ const MiniSideBar = ({show}) => {
                             : inactiveLink
                     }
                 >
-                    <div className={(show ? "hidden":"")+ " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                    <div className={ "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -168,7 +168,7 @@ const MiniSideBar = ({show}) => {
                         </svg>
                     </div>
                 </Link>
-                <div className={(show ? "hidden":"")+ " flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
+                <div className={ "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px]"}>
                     <button className={inactiveLink} onClick={logout}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

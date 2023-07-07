@@ -9,48 +9,49 @@ img {
 input,
 textarea,
 select {
-    @apply border-2 border-gray-300 rounded-md px-1 w-full;
-    @apply mb-2;
+    @apply border-2 border-gray-200 rounded-xl px-1 w-full p-2 px-3;
+    @apply mb-2 bg-white shadow-md;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus, textarea:focus, select:focus {
     @apply border-blue-900;
 }
 
 h1 {
-    @apply text-blue-900 mb-2 text-xl font-bold;
+    @apply text-gray-800 mb-4 text-2xl font-bold;
 }
 label {
-    @apply text-blue-900;
+    @apply text-gray-600;
 }
 .btn-primary {
-    @apply bg-blue-900 text-white px-4 py-1 rounded-md;
+    @apply bg-primary text-white px-4 py-2 rounded-md shadow-md;
 }
 .btn-default,
 .btn-red {
     @apply px-4 py-1 rounded-md;
 }
 .btn-red {
-    @apply bg-red-800 text-white;
+    @apply bg-red-600 text-red-200 border-2 border-red-800 px-4 py-1 rounded-md shadow-md ;
+}
+.btn-edit {
+    @apply bg-white text-green-600 border-2 border-green-600 px-4 py-1 rounded-md shadow-md md:w-[80px] xs:w-[87px] xs:mb-1 ;
 }
 .btn-default {
-    @apply bg-gray-500 text-white;
+    @apply bg-gray-600 text-white px-4 py-2 rounded-md;
 }
 table.basic {
-    @apply w-full;
+    @apply w-full bg-white rounded-xl shadow-xl;
 }
 table.basic thead tr td {
-    @apply bg-blue-100;
+    @apply text-sm text-gray-600 uppercase border-b-2 border-gray-200 px-4 ;
 }
 
 table.basic tr td {
-    @apply border border-blue-200 p-1;
+    @apply px-4 py-1 ;
 }
 
 table.basic a {
-    @apply bg-blue-900 text-white text-sm py-1 px-2 rounded-md inline-flex gap-1 mr-1;
+    @apply   px-4 rounded-md inline-flex mx-1 items-center gap-1 text-sm py-2;
 }
 
 #sidebar {
@@ -105,7 +106,7 @@ table.basic a {
 }
 aside nav a.active {
     position: relative;
-    background: white;
+    background: #EEEEEE;
     z-index: 100;
 }
 
@@ -117,12 +118,13 @@ aside nav a.active::before {
     border-radius: 10% 30% 40% 21%;
     top: -44px;
     right: -8px;
-    box-shadow: 10px 28px 0 2px rgb(255, 255, 255);
+    box-shadow: 10px 28px 0 2px #EEEEEE;
     z-index: -1;
     -webkit-border-radius: 10% 30% 40% 21%;
     -moz-border-radius: 10% 30% 40% 21%;
     -ms-border-radius: 10% 30% 40% 21%;
     -o-border-radius: 10% 30% 40% 21%;
+    pointer-events:none;
 }
 aside nav a.active::after {
     /* background-color: red; */
@@ -134,7 +136,43 @@ aside nav a.active::after {
     border-radius: 10% 40% 40% 10%;
     bottom: -42px;
     right: -8px;
-    box-shadow: 18px -26px 0 2px hsl(0, 0%, 100%);
+    box-shadow: 18px -26px 0 2px #EEEEEE;
+    z-index: -1;
+    pointer-events:none;
+
+}
+.miniAside nav a.active {
+    position: relative;
+    background: #EEEEEE;
+    z-index: 100;
+}
+
+.miniAside nav a.active::before {
+    content: '';
+    position: absolute;
+    width: 43px;
+    height: 42px;
+    border-radius: 10% 30% 40% 21%;
+    top: -44px;
+    right: -8px;
+    box-shadow: 10px 28px 0 2px #EEEEEE;
+    z-index: -1;
+    -webkit-border-radius: 10% 30% 40% 21%;
+    -moz-border-radius: 10% 30% 40% 21%;
+    -ms-border-radius: 10% 30% 40% 21%;
+    -o-border-radius: 10% 30% 40% 21%;
+}
+.miniAside nav a.active::after {
+    /* background-color: red; */
+    /*rotate: 12deg;
+    */content: '';
+    position: absolute;
+    width: 43px;
+    height: 40px;
+    border-radius: 10% 40% 40% 10%;
+    bottom: -42px;
+    right: -8px;
+    box-shadow: 18px -26px 0 2px #EEEEEE;
     z-index: -1;
 }
 #sidebar .side-menu li a {

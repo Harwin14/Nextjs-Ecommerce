@@ -13,11 +13,11 @@ export default function Layout({ children }) {
     if (!session) {
         return (
             <div>
-                <div className="bg-gray-200 w-screen h-screen flex items-center">
+                <div className="bg-abu w-screen h-screen flex items-center">
                     <div className="text-center w-full">
                         <button
                             onClick={() => signIn("google")}
-                            className="bg-white p-2 px-4 rounded-lg"
+                            className="bg-darkAbu p-2 px-4 rounded-lg"
                         >
                             Login with Google
                         </button>
@@ -27,8 +27,8 @@ export default function Layout({ children }) {
         ); 
     }
     return (
-        <div className="bg-gray-200 min-h-screen ">
-            <div className="block md:hidden flex items-center">
+        <div className="bg-abu min-h-screen h-screen overflow-hidden">
+            <div className="block md:hidden items-center p-4">
                 <button onClick={() => setShowNav(true)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -44,13 +44,12 @@ export default function Layout({ children }) {
                     </svg>
                 </button>
                 <div className="flex grow justify-center mr-6">
-
                 <Logo/>
                 </div>
             </div>
             <div className="flex">
                 <Nav show={showNav} />
-                <div className="bg-white flex-grow mt-2 mr-2 mb-2 rounded-lg p-4">
+                <div className="bg-darkAbu flex-grow mt-10  mr-4 mb-10 ml-[7px] rounded-[40px] p-10 h-[880px] ">
                     {children}
                 </div>
             </div>

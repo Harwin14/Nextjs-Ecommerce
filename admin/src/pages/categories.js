@@ -58,7 +58,7 @@ const Categories = ({ swal }) => {
     const deleteCategory = (category) => {
         swal.fire({
             title: "Are you sure ?",
-            text: `Do you want to delete ${category.name}?`,
+            text: `Do you really want to delete ${category.name}?`,
             showCancelButton: true,
             cancelButtonText: "Cancel",
             confirmButtonText: "Yes, Delete",
@@ -175,7 +175,7 @@ const Categories = ({ swal }) => {
                                     placeholder="values, comma separated"
                                 />
                                 <button
-                                    className="btn-default"
+                                    className="btn-red "
                                     onClick={() => removeProperty(index)}
                                     type="button"
                                 >
@@ -224,7 +224,7 @@ const Categories = ({ swal }) => {
                                             onClick={() =>
                                                 editCategory(category)
                                             }
-                                            className="btn-primary mr-1"
+                                            className="btn-edit mr-1"
                                         >
                                             Edit
                                         </button>
@@ -232,7 +232,7 @@ const Categories = ({ swal }) => {
                                             onClick={() =>
                                                 deleteCategory(category)
                                             }
-                                            className="btn-primary"
+                                            className="btn-red"
                                         >
                                             Delete
                                         </button>

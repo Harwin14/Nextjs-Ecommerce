@@ -29,7 +29,7 @@ export default function Layout({ children }) {
                     </div>
                 </div>
             </div>
-        );
+        ); 
     }
     return (
         <div className="bg-abu min-h-screen h-screen overflow-hidden relative">

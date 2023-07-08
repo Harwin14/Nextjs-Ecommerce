@@ -72,7 +72,7 @@ export default function Layout({ children }) {
                 </div>
 
                     ) : (
-                <div className=" transition-width duration-300 ease-linear">
+                <div className="transition-width duration-300 ease-linear">
                     <MiniSideBar />
                 </div>
                     )

@@ -70,7 +70,6 @@ export default function Layout({ children }) {
                 <div className="hidden md:block transition-width duration-300 ease-linear">
                     <Nav />
                 </div>
-
                     ) : (
                 <div className="transition-width duration-300 ease-linear">
                     <MiniSideBar />

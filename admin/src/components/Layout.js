@@ -77,7 +77,6 @@ export default function Layout({ children }) {
                 </div>
                     )
                 }
-
                 <div className="bg-darkAbu flex-grow mt-10  mr-4 mb-10 ml-[7px] rounded-[40px] p-10 h-[880px] ">
                     {children}
                 </div>

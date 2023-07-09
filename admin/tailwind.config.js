@@ -14,7 +14,8 @@ module.exports = {
       darkAbu:'#EEEEEE'
      },
      screens:{
-      'xs':'300px',
+      'xs':'400px',
+      's':'500px',
       'tablet':'600px'
      }
     },

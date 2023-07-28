@@ -1,0 +1,6 @@
+node-modules
+tips.text
+tips
+.env
+package-lock.json
+yarn.lock

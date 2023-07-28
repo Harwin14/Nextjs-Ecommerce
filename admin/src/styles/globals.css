@@ -54,60 +54,10 @@ table.basic a {
     @apply   px-4 rounded-md inline-flex mx-1 items-center gap-1 text-sm py-2;
 }
 
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100%;
-    background: var(--light);
-    z-index: 2000;
-    font-family: var(--lato);
-    transition: 0.3s ease;
-    overflow-x: hidden;
-    scrollbar-width: none;
-}
-#sidebar::--webkit-scrollbar {
-    display: none;
-}
-#sidebar.hide {
-    width: 60px;
-}
-#sidebar .brand {
-    font-size: 24px;
-    font-weight: 700;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    color: var(--blue);
-    position: sticky;
-    top: 0;
-    left: 0;
-    background: var(--light);
-    z-index: 500;
-    padding-bottom: 20px;
-    box-sizing: content-box;
-}
-#sidebar .brand .bx {
-    min-width: 60px;
-    display: flex;
-    justify-content: center;
-}
-#sidebar .side-menu {
-    width: 100%;
-    margin-top: 48px;
-}
-#sidebar .side-menu li {
-    height: 48px;
-    background: transparent;
-    margin-left: 6px;
-    border-radius: 48px 0 0 48px;
-    padding: 4px;
-}
 aside nav a.active {
     position: relative;
     background: #EEEEEE;
-    z-index: 100;
+    z-index: 10;
 }
 
 aside nav a.active::before {
@@ -125,11 +75,12 @@ aside nav a.active::before {
     -ms-border-radius: 10% 30% 40% 21%;
     -o-border-radius: 10% 30% 40% 21%;
     pointer-events:none;
+    /* background-color: red; */
 }
 aside nav a.active::after {
     /* background-color: red; */
-    /*rotate: 12deg;
-    */content: '';
+     /* rotate: 12deg; */
+    content: '';
     position: absolute;
     width: 43px;
     height: 40px;
@@ -141,72 +92,3 @@ aside nav a.active::after {
     pointer-events:none;
 
 }
-.miniAside nav a.active {
-    position: relative;
-    background: #EEEEEE;
-    z-index: 100;
-}
-
-.miniAside nav a.active::before {
-    content: '';
-    position: absolute;
-    width: 43px;
-    height: 42px;
-    border-radius: 10% 30% 40% 21%;
-    top: -44px;
-    right: -8px;
-    box-shadow: 10px 28px 0 2px #EEEEEE;
-    z-index: -1;
-    -webkit-border-radius: 10% 30% 40% 21%;
-    -moz-border-radius: 10% 30% 40% 21%;
-    -ms-border-radius: 10% 30% 40% 21%;
-    -o-border-radius: 10% 30% 40% 21%;
-}
-.miniAside nav a.active::after {
-    /* background-color: red; */
-    /*rotate: 12deg;
-    */content: '';
-    position: absolute;
-    width: 43px;
-    height: 40px;
-    border-radius: 10% 40% 40% 10%;
-    bottom: -42px;
-    right: -8px;
-    box-shadow: 18px -26px 0 2px #EEEEEE;
-    z-index: -1;
-}
-#sidebar .side-menu li a {
-    width: 100%;
-    height: 100%;
-    background: var(--light);
-    display: flex;
-    align-items: center;
-    border-radius: 48px;
-    font-size: 16px;
-    color: var(--dark);
-    white-space: nowrap;
-    overflow-x: hidden;
-}
-#sidebar .side-menu li.active a {
-    color: var(--blue);
-}
-#sidebar.hide .side-menu li a {
-    width: calc(48px - (4px * 2));
-    transition: width 0.3s ease;
-    -webkit-transition: width 0.3s ease;
-    -moz-transition: width 0.3s ease;
-    -ms-transition: width 0.3s ease;
-    -o-transition: width 0.3s ease;
-}
-#sidebar .side-menu li a.logout {
-    color: var(--red);
-}
-#sidebar .side-menu.top li a:hover {
-    color: var(--blue);
-}
-#sidebar .side-menu li a .bx {
-    min-width: calc(60px - ((4px + 6px) * 2));
-    display: flex;
-    justify-content: center;
-}
-/* SIDE BAR */

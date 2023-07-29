@@ -90,5 +90,4 @@ aside nav a.active::after {
     box-shadow: 18px -26px 0 2px #EEEEEE;
     z-index: -1;
     pointer-events:none;
-
 }

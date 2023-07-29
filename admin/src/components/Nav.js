@@ -35,7 +35,7 @@ export default function Nav({ show }) {
         >
           <div
             className={
-              "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px] max-md:w-[40px]" +
+              "bg-abu flex gap-1  ml-[-2px] p-2 rounded-full w-[180px] tablet:w-[200px]" +
               (!show
                 ? " hover:rounded-full hover:bg-primary hover:w-10 hover:h-10 hover:p-2 hover:shadow-lg"
                 : "")

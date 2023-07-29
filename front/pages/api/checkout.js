@@ -6,3 +6,4 @@ export default function handler(req, res) {
   const { name, email, city, postalCode, streetAddress, country, products } = req.body;
   const productsIds = products.split(',')
 }
+ 

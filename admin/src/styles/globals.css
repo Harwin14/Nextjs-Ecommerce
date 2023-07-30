@@ -42,7 +42,8 @@ label {
 table.basic {
     @apply w-full bg-white rounded-xl shadow-xl;
 }
-table.basic thead tr td {
+table.basic thead tr td,
+table.basic thead tr th {
     @apply text-sm text-gray-600 uppercase border-b-2 border-gray-200 px-4 ;
 }
 

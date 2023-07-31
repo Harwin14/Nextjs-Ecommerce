@@ -12,14 +12,14 @@ export const ButtonStyle = css`
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   svg {
-    height: 16px;
+    height: 30px;
     margin-right: 5px;
   }
   ${(props) =>
     props.block &&
     css`
       display: block;
-      width:100%;
+      width: 100%;
     `}
   ${(props) =>
     props.white &&
@@ -37,20 +37,20 @@ export const ButtonStyle = css`
       border: 2px solid #fff;
     `}
     ${(props) =>
-      props.black &&
-      !props.outline &&
-      css`
-        background-color: #000;
-        color: #fff;
-      `}
+    props.black &&
+    !props.outline &&
+    css`
+      background-color: #000;
+      color: #fff;
+    `}
     ${(props) =>
-      props.black &&
-      props.outline &&
-      css`
-        background-color: transparent;
-        color: #000;
-        border: 2px solid #000;
-      `}
+    props.black &&
+    props.outline &&
+    css`
+      background-color: transparent;
+      color: #000;
+      border: 2px solid #000;
+    `}
 ${(props) =>
     props.primary &&
     !props.outline &&
@@ -67,11 +67,26 @@ ${(props) =>
       border: 2px solid ${primary};
       color: ${primary};
     `}
+    ${(props) =>
+    props.warning &&
+    !props.outline &&
+    css`
+      background-color: #FFD433;
+      border: 2px solid #FFD433;
+      color: #000;
+    `}
+      ${(props) =>
+    props.warning &&
+    props.outline &&
+    css`
+      background-color: transparent;
+      border: 2px solid #FFD433;
+      color: #FFD433;
+    `}
 ${(props) =>
     props.size === "l" &&
     css`
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      padding: 8px 10px;
       svg {
         height: 20px;
       }

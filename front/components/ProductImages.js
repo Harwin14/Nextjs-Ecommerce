@@ -7,10 +7,12 @@ const Image = styled.img`
 `;
 const BigImage = styled.img`
   max-width: 100%;
-  max-height: 200px;
+  height: 200px;
+  object-fit: contain;
 `;
 const ImageButtons = styled.div`
   display: flex;
+  justify-content: center;
   gap: 10px;
   flex-grow: 0;
   margin-top: 10px;
@@ -23,7 +25,6 @@ const ImageButton = styled.div`
     border-color:#ccc;`
       : `
     border-color:transparent;
-    opacity:0.7;
 `}
   height: 40px;
   padding: 2px;
@@ -33,10 +34,12 @@ const ImageButton = styled.div`
 const BigImageWrapper = styled.div`
   text-align: center;
 `;
+
 export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
   return (
     <>
+ 
       <BigImageWrapper>
         <BigImage src={activeImage} />
       </BigImageWrapper>

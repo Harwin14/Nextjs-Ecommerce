@@ -10,9 +10,12 @@ import styled from "styled-components";
 
 const ColumnWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   margin-top: 40px;
+  @media screen adn (min-width: 768px) {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
 `;
 const Box = styled.div`
   background-color: #fff;
@@ -23,14 +26,22 @@ const ProductInfoCell = styled.td`
   padding: 10px 0;
 `;
 const ProductImageBox = styled.div`
-  width: 100px;
+  width: 70px;
   height: 100px;
-  padding: 10px;
+  padding: 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  img {
+    max-width: 60px;
+    max-height: 60px;
+  }
+  @media screen and (min-width:768px){
+  padding: 10px;
+  width: 100px;
+  height: 100px;
   img {
     max-width: 80px;
     max-height: 80px;
@@ -38,7 +49,12 @@ const ProductImageBox = styled.div`
 `;
 
 const QuantityLabel = styled.span`
-  padding: 0 3px;
+  padding: 0 15px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    padding: 0 10px;
+  }
 `;
 const CityHolder = styled.div`
   display: flex;

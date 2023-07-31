@@ -61,7 +61,7 @@ const NavLink = styled(Link)`
     color:#000;
     border-radius: 5px;
     max-width: 100%;
-  }
+  } 
 `;
 
 const NavButton = styled.button`

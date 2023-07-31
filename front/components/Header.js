@@ -69,7 +69,7 @@ const NavButton = styled.button`
   width: 30px;
   height: 30px;
   border: 0;
-  color: white; 
+  color: white;  
   cursor: pointer;
   position: relative;
   z-index: 3;

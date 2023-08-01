@@ -5,9 +5,14 @@ const StyledTitle = styled.h1`
   .${(props) =>
     props.size === "xl" &&
     css`
-      font-size: 5rem;
+      color: #fff;
+      font-size: 3rem;
       text-align: center;
-   
+      color: blue;
+      @media screen and (min-height: 768px) {
+        font-size: 5rem;
+        color: red;
+      }
     `}
     ${(props) =>
       props.size === "h1" &&
@@ -40,15 +45,15 @@ const StyledTitle = styled.h1`
     ${(props) =>
       props.size === "h3" &&
       css`
+        color: #fff;
         font-weight: 600;
-        font-size: 80%;
+        font-size: 2rem;
         text-align: center;
         max-width: 1100px;
         margin: 0 auto;
         color: #86868b;
         padding: 0 20px;
-
-        & @media screen and (min-height:768px) {
+        @media screen and (min-height: 768px) {
           line-height: 40px;
           font-size: 3rem;
         }

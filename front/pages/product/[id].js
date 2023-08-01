@@ -76,66 +76,125 @@ const Container = styled.div`
     max-width: 100%;
   }
 `;
-const StyleP = styled.p`
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 40px;
+const TitleIndex = styled.div`
+  margin-bottom: -200px;
+`;
+const DescWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 40px;
   text-align: center;
-  max-width: 1100px;
-  margin: 40px auto;
-  color: #fff;
-`;
-const CardWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 120px;
-  p {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
-`;
-const CardPurple = styled.div`
-  position: relative; 
-  padding: 20px;
-  border-radius: 9rem;
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    background-color: #0B1940;
-    box-shadow: 
-    -42px 100px 100px -4px #0B1940,
-    -52px -39px 100px 3px #0B1940,
-    -42px 64px 100px 7px #0B1940,
-    56px 7px 100px 31px #0B1940;
-
-  p {
-    color: #fff;
-    /* Other styles for the paragraph */
-  }
-`;
-const CardBlue = styled.div`
-position: relative; 
-padding: 20px;
-border-radius: 9rem;
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
   margin: 0 auto;
-  padding:9px;
-  border-radius: 3rem;
-  background-color: #130E48;
-  box-shadow: -27px 12px 100px 100px #130E48;
+  flex-wrap: wrap;
+  width: 300px;
+  @media screen and (min-height: 568px) {
+    width: 800px;
+  }
+`;
+const Hero = styled.div`
+  background-color: #000;
+  background-image: url(../m2_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
 
-p {
-  color: #fff;
-  /* Other styles for the paragraph */
-}
+  display: grid;
+  margin-top: 200px;
+  grid-template-columns:
+    1fr
+    @media screen and (min-height: 568px) {
+    padding: 20px;
+    grid-template-columns: 1fr 1fr;
+    padding: 200px;
+  }
+`;
 
+const ContentCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  @media screen and (min-height: 768px) {
+    img {
+      max-width: 400px;
+      height: 400px;
+    }
+  }
+  @media screen and (min-height: 568px) {
+    img {
+      max-width: 300px;
+      height: 300px;
+    }
+  }
+`;
+
+const GradientPBlue = styled.p`
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  background: linear-gradient(to bottom right, #8fdafd, #4a93fe);
+  -webkit-background-clip: text;
+  color: transparent;
+`;
+const GradientPPurple = styled.p`
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  background: linear-gradient(to bottom right, #c699ff, #a55aff);
+  -webkit-background-clip: text;
+  color: transparent;
+`;
+
+const FeatureDiv = styled.div`
+  margin: 0 auto;
+  Title{
+    text-align:center;
+    
+  }
+  @media screen and(min-heigh:568px) {
+    margin: 300px;
+  }
+`;
+const Feature = styled.div`
+  background-color: #000;
+  background-image: url(../wild_beasts.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin:40px 20px;
+  padding: 80px;
+  @media screen and(min-heigh:568px) {
+    padding: 200px;
+    background-size: 100%;
+
+  }
+`;
+
+const FeatureScreen = styled.div`
+  background-color: #000;
+  background-image: url(../screen_processing.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center center;
+  padding: 200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin:40px 20px;
+  padding: 80px;
+  @media screen and(min-heigh:568px) {
+    padding: 200px;
+    background-size: 100%;
+
+  }
 `;
 export default function ProductPage({ product }) {
   return (
@@ -179,12 +238,13 @@ export default function ProductPage({ product }) {
         </ColWrapper>
       </Center>
 
-      <Center>
-        <img src="../hero_intro.jpg" />
-        <Title size="xl">
-          Mover. Maker.
-          <br /> Boundary breaker.
-        </Title>
+      <img src="../hero_intro.jpg" />
+      <Title size="xl">
+        Mover. Maker.
+        <br /> Boundary breaker.
+      </Title>
+
+      <TitleIndex>
         <Title size="h3">
           Supercharged by M2 Pro or M2 Max, MacBook Pro takes its power and
           efficiency further than ever. It delivers exceptional performance
@@ -192,62 +252,70 @@ export default function ProductPage({ product }) {
           Combined with a stunning Liquid Retina XDR display and all the ports
           you need — this is a pro laptop without equal.
         </Title>
-        <StyleP>From $1999</StyleP>
+        <Title size="h1">Supercharged by</Title>
+      </TitleIndex>
 
-        <Title size="h2">Supercharged by</Title>
-        <CardWrapper>
-          <CardPurple>
-            <img src="../m2.png" />
-            <p>
-              1 Up to 12-core CPU
-              <br /> Up to 19-core GPU
-              <br /> Up to 32GB unified memory
-              <br />
-              200GB/s memory bandwidth
-            </p>
-          </CardPurple>
-          <CardBlue>
-            <img src="../m2_max.png" />
-            <p>
-              12-core CPU <br /> Up to 38-core GPU <br />
-              Up to 96GB unified memory <br /> 400GB/s memory bandwidth
-            </p>
-          </CardBlue>
-        </CardWrapper>
-        <h3>
+      <Hero>
+        <ContentCenter>
+          <img src="../m2.png" />
+          <GradientPBlue>
+            1 Up to 12-core CPU
+            <br /> Up to 19-core GPU
+            <br /> Up to 32GB unified memory
+            <br />
+            200GB/s memory bandwidth
+          </GradientPBlue>
+        </ContentCenter>
+        <ContentCenter>
+          <img src="../m2_max.png" />
+          <GradientPPurple>
+            12-core CPU <br /> Up to 38-core GPU <br />
+            Up to 96GB unified memory <br /> 400GB/s memory bandwidth
+          </GradientPPurple>
+        </ContentCenter>
+      </Hero>
+
+      <DescWrapper>
+        <Title size="h3">
           Introducing the next generation of Apple silicon for pros: The
           lightning-fast M2 Pro and the extraordinary M2 Max — the most powerful
           and efficient chip ever in a pro laptop.
-        </h3>
-        <Button>Go inside M2 Pro and M2 Max +</Button>
+        </Title>
+        <Button gradient size="xl">
+          Go inside M2 Pro and M2 Max
+        </Button>
+      </DescWrapper>
 
-        <div>
-          <h1>M2 Pro</h1>
-          <p>
+      <FeatureDiv>
+        <Center>
+          <Title size="h1" gradient>
+            M2 Pro
+          </Title>
+          <Title size="h4" left>
             M2 Pro brings power to take on even more demanding projects. The up
             to 12‑core CPU and next‑generation Neural Engine make pro workflows
             fly — from sorting and editing thousands of images to running
             computational fluid dynamics simulations. And the up to 19‑core GPU
             drives a huge boost in graphics performance for both work and play.
-          </p>
-          <img src="../wild_beasts.jpg" />
-          <img src="../screen_processing.jpg" />
-        </div>
-        <div>
-          <h1>M2 Max</h1>
-          <p>
-            The most powerful and efficient chip ever in a pro laptop, M2 Max is
-            engineered to help pros push the boundaries of their ingenuity and
-            creativity. With the same next‑generation 12‑core CPU as M2 Pro, M2
-            Max has twice the memory bandwidth, up to three times the unified
-            memory, and up to 38 GPU cores. So you can render effects, merge
-            massive panoramas, and design extreme 3D geometry on an
-            unprecedented scale.
-          </p>
-          <img src="../wild_beasts.jpg" />
-          <img src="../screen_processing.jpg" />
-        </div>
-      </Center>
+          </Title>
+        </Center>
+        <Feature></Feature>
+        <FeatureScreen></FeatureScreen>
+      </FeatureDiv>
+      <div>
+        <h1>M2 Max</h1>
+        <p>
+          The most powerful and efficient chip ever in a pro laptop, M2 Max is
+          engineered to help pros push the boundaries of their ingenuity and
+          creativity. With the same next‑generation 12‑core CPU as M2 Pro, M2
+          Max has twice the memory bandwidth, up to three times the unified
+          memory, and up to 38 GPU cores. So you can render effects, merge
+          massive panoramas, and design extreme 3D geometry on an unprecedented
+          scale.
+        </p>
+        {/* <img src="../wild_beasts.jpg" />
+        <img src="../screen_processing.jpg" /> */}
+      </div>
     </Container>
   );
 }

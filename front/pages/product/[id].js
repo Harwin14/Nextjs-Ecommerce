@@ -150,7 +150,7 @@ const ContentCenter = styled.div`
       height: 400px;
       margin: 10px -100px;
     }
-  }
+  } 
 `; 
 
 const GradientPBlue = styled.p`

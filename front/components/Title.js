@@ -8,10 +8,9 @@ const StyledTitle = styled.h1`
       color: #fff;
       font-size: 3rem;
       text-align: center;
-      color: blue;
       @media screen and (min-height: 768px) {
         font-size: 5rem;
-        color: red;
+
       }
     `}
     ${(props) =>
@@ -69,7 +68,7 @@ const StyledTitle = styled.h1`
           color: #86868b;
           margin: -30px auto;
 
-          @media screen and(min-heigh:568px) {
+          @media screen and (min-heigh: 568px) {
             font-weight: 600;
             font-size: 1.4rem;
             line-height: 40px;
@@ -80,7 +79,7 @@ const StyledTitle = styled.h1`
         props.left &&
         css`
           text-align: center;
-          @media screen and(min-heigh:568px) {
+          @media screen and (min-heigh: 568px) {
             text-align: left;
           }
         `}

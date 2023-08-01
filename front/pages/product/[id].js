@@ -77,18 +77,37 @@ const Container = styled.div`
   }
 `;
 const TitleIndex = styled.div`
-  margin-bottom: -200px;
+  margin: 50px 0 0;
+  @media screen and (min-width: 768px) {
+    margin: 200px 0 -200px;
+  }
 `;
 const DescWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 40px;
-  text-align: center;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  width: 300px;
-  @media screen and (min-height: 568px) {
+  margin: 100px auto;
+
+  @media screen and (min-width: 768px) {
     width: 800px;
+  }
+  @media screen and (max-width: 368px) {
+    margin:0 auto;
+  }
+`;
+
+const M2wrapper = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  @media screen and (min-width: 568px) {
+    align-items: left;
+    width: 58%;
   }
 `;
 const Hero = styled.div`
@@ -97,14 +116,13 @@ const Hero = styled.div`
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center center;
-
+  max-width: 100%;
   display: grid;
-  margin-top: 200px;
-  grid-template-columns:
-    1fr
-    @media screen and (min-height: 568px) {
-    padding: 20px;
-    grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  box-sizing: border-box;
+  @media screen and (min-width: 768px) {
     padding: 200px;
   }
 `;
@@ -115,20 +133,22 @@ const ContentCenter = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    max-width: 100px;
-    height: 100px;
+    max-width: 100%;
+    height: 200px;
     margin: 0 auto;
   }
-  @media screen and (min-height: 768px) {
+  @media screen and (min-width: 768px) {
     img {
-      max-width: 400px;
-      height: 400px;
+      max-width: 100%;
+      height: 280px;
+      margin: 10px -100px;
     }
   }
-  @media screen and (min-height: 568px) {
+  @media screen and (min-width: 1268px) {
     img {
-      max-width: 300px;
-      height: 300px;
+      max-width: 100%;
+      height: 400px;
+      margin: 10px -100px;
     }
   }
 `;
@@ -141,6 +161,9 @@ const GradientPBlue = styled.p`
   background: linear-gradient(to bottom right, #8fdafd, #4a93fe);
   -webkit-background-clip: text;
   color: transparent;
+  @media screen and (max-width: 368px) {
+    font-size: .8rem;
+  }
 `;
 const GradientPPurple = styled.p`
   text-align: center;
@@ -150,13 +173,15 @@ const GradientPPurple = styled.p`
   background: linear-gradient(to bottom right, #c699ff, #a55aff);
   -webkit-background-clip: text;
   color: transparent;
+  @media screen and (max-width: 368px) {
+    font-size: .8rem;
+  }
 `;
 
 const FeatureDiv = styled.div`
   margin: 0 auto;
-  Title{
-    text-align:center;
-    
+  Title {
+    text-align: center;
   }
   @media screen and(min-heigh:568px) {
     margin: 300px;
@@ -170,12 +195,11 @@ const Feature = styled.div`
   background-position: center center;
   display: grid;
   grid-template-columns: 1fr;
-  margin:40px 20px;
+  margin: 40px 20px;
   padding: 80px;
   @media screen and(min-heigh:568px) {
     padding: 200px;
     background-size: 100%;
-
   }
 `;
 
@@ -188,12 +212,11 @@ const FeatureScreen = styled.div`
   padding: 200px;
   display: grid;
   grid-template-columns: 1fr;
-  margin:40px 20px;
+  margin: 40px 20px;
   padding: 80px;
   @media screen and(min-heigh:568px) {
     padding: 200px;
     background-size: 100%;
-
   }
 `;
 export default function ProductPage({ product }) {
@@ -244,15 +267,15 @@ export default function ProductPage({ product }) {
         <br /> Boundary breaker.
       </Title>
 
+      <Title size="l">
+        Supercharged by M2 Pro or M2 Max, MacBook Pro takes its power and
+        efficiency further than ever. It delivers exceptional performance
+        whether it’s plugged in or not, and now has even longer battery life.
+        Combined with a stunning Liquid Retina XDR display and all the ports you
+        need — this is a pro laptop without equal.
+      </Title>
       <TitleIndex>
-        <Title size="h3">
-          Supercharged by M2 Pro or M2 Max, MacBook Pro takes its power and
-          efficiency further than ever. It delivers exceptional performance
-          whether it’s plugged in or not, and now has even longer battery life.
-          Combined with a stunning Liquid Retina XDR display and all the ports
-          you need — this is a pro laptop without equal.
-        </Title>
-        <Title size="h1">Supercharged by</Title>
+        <Title size="xl">Supercharged by</Title>
       </TitleIndex>
 
       <Hero>
@@ -276,7 +299,7 @@ export default function ProductPage({ product }) {
       </Hero>
 
       <DescWrapper>
-        <Title size="h3">
+        <Title size="l">
           Introducing the next generation of Apple silicon for pros: The
           lightning-fast M2 Pro and the extraordinary M2 Max — the most powerful
           and efficient chip ever in a pro laptop.
@@ -287,18 +310,17 @@ export default function ProductPage({ product }) {
       </DescWrapper>
 
       <FeatureDiv>
-        <Center>
-          <Title size="h1" gradient>
-            M2 Pro
-          </Title>
-          <Title size="h4" left>
+        <M2wrapper>
+          <Title gradient>M2 Pro</Title>
+          <Title size="l" left>
             M2 Pro brings power to take on even more demanding projects. The up
             to 12‑core CPU and next‑generation Neural Engine make pro workflows
             fly — from sorting and editing thousands of images to running
             computational fluid dynamics simulations. And the up to 19‑core GPU
             drives a huge boost in graphics performance for both work and play.
           </Title>
-        </Center>
+        </M2wrapper>
+
         <Feature></Feature>
         <FeatureScreen></FeatureScreen>
       </FeatureDiv>

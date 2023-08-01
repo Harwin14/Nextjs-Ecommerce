@@ -8,11 +8,30 @@ const StyledTitle = styled.h1`
       color: #fff;
       font-size: 3rem;
       text-align: center;
-      @media screen and (min-height: 768px) {
+      padding: 0 10px;
+      @media screen and (min-width: 768px) {
         font-size: 5rem;
-
+      }
+      @media screen and (max-width: 368px) {
+        font-size: 2rem;
       }
     `}
+    ${(props) =>
+      props.size === "l" &&
+      css`
+        font-weight: 600;
+        font-size: 80%;
+        text-align: center;
+        max-width: 1100px;
+        margin: 0 auto;
+        color: #86868b;
+        padding: 0 10px;
+        @media screen and (min-width: 768px) {
+          line-height: 40px;
+          font-weight: 500;
+          font-size: 1.8rem;
+        }
+      `}
     ${(props) =>
       props.size === "h1" &&
       css`
@@ -20,19 +39,18 @@ const StyledTitle = styled.h1`
         text-align: center;
       `}
       ${(props) =>
-        props.size === "h1" &&
         props.gradient &&
         css`
-          font-size: 2rem;
-          text-align: center;
+          color: #fff;
+          font-size: 3rem;
           color: #60cafc;
           font-weight: 600;
+          margin: 40px 0 20px;
           background: linear-gradient(45deg, #ccefff, #60cafc 12%, #2f65ff);
           -webkit-background-clip: text;
           color: transparent;
-          & @media screen and (min-height:568px) {
+          @media screen and (min-width: 768px) {
             font-size: 4rem;
-            text-align: left;
           }
         `}
     ${(props) =>
@@ -41,22 +59,7 @@ const StyledTitle = styled.h1`
         font-size: 3.2rem;
         text-align: center;
       `}
-    ${(props) =>
-      props.size === "h3" &&
-      css`
-        color: #fff;
-        font-weight: 600;
-        font-size: 2rem;
-        text-align: center;
-        max-width: 1100px;
-        margin: 0 auto;
-        color: #86868b;
-        padding: 0 20px;
-        @media screen and (min-height: 768px) {
-          line-height: 40px;
-          font-size: 3rem;
-        }
-      `}
+  
       ${(props) =>
         props.size === "h4" &&
         css`
@@ -68,7 +71,7 @@ const StyledTitle = styled.h1`
           color: #86868b;
           margin: -30px auto;
 
-          @media screen and (min-heigh: 568px) {
+          @media screen and (min-width: 568px) {
             font-weight: 600;
             font-size: 1.4rem;
             line-height: 40px;
@@ -79,7 +82,7 @@ const StyledTitle = styled.h1`
         props.left &&
         css`
           text-align: center;
-          @media screen and (min-heigh: 568px) {
+          @media screen and (min-width: 568px) {
             text-align: left;
           }
         `}

@@ -94,7 +94,7 @@ const DescWrapper = styled.div`
     width: 800px;
   }
   @media screen and (max-width: 368px) {
-    margin:0 auto;
+    margin: 0 auto;
   }
 `;
 
@@ -151,7 +151,7 @@ const ContentCenter = styled.div`
       margin: 10px -100px;
     }
   }
-`;
+`; 
 
 const GradientPBlue = styled.p`
   text-align: center;
@@ -162,7 +162,7 @@ const GradientPBlue = styled.p`
   -webkit-background-clip: text;
   color: transparent;
   @media screen and (max-width: 368px) {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 `;
 const GradientPPurple = styled.p`
@@ -174,7 +174,7 @@ const GradientPPurple = styled.p`
   -webkit-background-clip: text;
   color: transparent;
   @media screen and (max-width: 368px) {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 `;
 

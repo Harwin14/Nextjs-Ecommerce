@@ -7,17 +7,26 @@ import WhiteBox from "@/components/WhiteBox";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import Link from "next/link";
-import styled from "styled-components";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 
 const ColWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-
   gap: 40px;
   margin: 40px 0;
   @media screen and (min-width: 768px) {
     grid-template-columns: 0.8fr 1.4fr;
   }
+  ${(props) =>
+    props.featured &&
+    css`
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+      background-color: #ddd;
+    `}
 `;
 const PriceRow = styled.div`
   display: flex;
@@ -70,11 +79,17 @@ const StickyHeader = styled.div`
   opacity: 0.6;
 `;
 const Container = styled.div`
-  background-color: #000;
-  color: #fff;
+  background-color: transparent;
+  color: #000;
   img {
     max-width: 100%;
   }
+  ${(props) =>
+    props.featured &&
+    css`
+      background-color: #000;
+      color: #fff;
+    `}
 `;
 const TitleIndex = styled.div`
   margin: 50px 0 0;
@@ -150,8 +165,8 @@ const ContentCenter = styled.div`
       height: 400px;
       margin: 10px -100px;
     }
-  } 
-`; 
+  }
+`;
 
 const GradientPBlue = styled.p`
   text-align: center;
@@ -195,38 +210,53 @@ const Feature = styled.div`
   background-position: center center;
   display: grid;
   grid-template-columns: 1fr;
-  margin: 40px 20px;
-  padding: 80px;
+  margin: 80px 400px;
+  padding: 300px;
   @media screen and(min-heigh:568px) {
     padding: 200px;
     background-size: 100%;
   }
 `;
 
-const FeatureScreen = styled.div`
-  background-color: #000;
-  background-image: url(../screen_processing.jpg);
-  background-repeat: no-repeat;
-  background-size: 100%;
+const LaptopM2 = styled.div`
+  max-width: 1000px;
+  height: 1000px; /* Sesuaikan ukuran dengan kebutuhan Anda */
+  background-image: url("../m2_laptop.jpg");
   background-position: center center;
-  padding: 200px;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 40px 20px;
-  padding: 80px;
-  @media screen and(min-heigh:568px) {
-    padding: 200px;
-    background-size: 100%;
-  }
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: -200px auto;
 `;
+const FeatureScreen = styled.div`
+  position: absolute;
+  top: 40px; /* Sesuaikan posisi vertikal sesuai kebutuhan */
+  left: 85px; /* Sesuaikan posisi horizontal sesuai kebutuhan */
+  width: 830px; /* Sesuaikan ukuran dengan kebutuhan Anda */
+  height: 900px; /* Sesuaikan ukuran dengan kebutuhan Anda */
+  background-image: url(../screen_processing.jpg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
+
 export default function ProductPage({ product }) {
+  const [isFeatured, setIsFeatured] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    const featured = router.asPath.includes("64a66001ead2f50ac344e9c8");
+    if (featured) {
+      setIsFeatured(true);
+    }
+  }, [router.asPath]);
+
   return (
-    <Container>
+    <Container featured={isFeatured}>
       <StickyHeader>
         <Header />
       </StickyHeader>
       <Center>
-        <ColWrapper>
+        <ColWrapper featured={isFeatured}>
           <WhiteBox>
             <ProductImages images={product.images} />
           </WhiteBox>
@@ -261,83 +291,97 @@ export default function ProductPage({ product }) {
         </ColWrapper>
       </Center>
 
-      <img src="../hero_intro.jpg" />
-      <Title size="xl">
-        Mover. Maker.
-        <br /> Boundary breaker.
-      </Title>
-
-      <Title size="l">
-        Supercharged by M2 Pro or M2 Max, MacBook Pro takes its power and
-        efficiency further than ever. It delivers exceptional performance
-        whether it’s plugged in or not, and now has even longer battery life.
-        Combined with a stunning Liquid Retina XDR display and all the ports you
-        need — this is a pro laptop without equal.
-      </Title>
-      <TitleIndex>
-        <Title size="xl">Supercharged by</Title>
-      </TitleIndex>
-
-      <Hero>
-        <ContentCenter>
-          <img src="../m2.png" />
-          <GradientPBlue>
-            1 Up to 12-core CPU
-            <br /> Up to 19-core GPU
-            <br /> Up to 32GB unified memory
-            <br />
-            200GB/s memory bandwidth
-          </GradientPBlue>
-        </ContentCenter>
-        <ContentCenter>
-          <img src="../m2_max.png" />
-          <GradientPPurple>
-            12-core CPU <br /> Up to 38-core GPU <br />
-            Up to 96GB unified memory <br /> 400GB/s memory bandwidth
-          </GradientPPurple>
-        </ContentCenter>
-      </Hero>
-
-      <DescWrapper>
-        <Title size="l">
-          Introducing the next generation of Apple silicon for pros: The
-          lightning-fast M2 Pro and the extraordinary M2 Max — the most powerful
-          and efficient chip ever in a pro laptop.
-        </Title>
-        <Button gradient size="xl">
-          Go inside M2 Pro and M2 Max
-        </Button>
-      </DescWrapper>
-
-      <FeatureDiv>
-        <M2wrapper>
-          <Title gradient>M2 Pro</Title>
-          <Title size="l" left>
-            M2 Pro brings power to take on even more demanding projects. The up
-            to 12‑core CPU and next‑generation Neural Engine make pro workflows
-            fly — from sorting and editing thousands of images to running
-            computational fluid dynamics simulations. And the up to 19‑core GPU
-            drives a huge boost in graphics performance for both work and play.
+      {isFeatured && (
+        <>
+          <img src="../hero_intro.jpg" />
+          <Title size="xl">
+            Mover. Maker.
+            <br /> Boundary breaker.
           </Title>
-        </M2wrapper>
 
-        <Feature></Feature>
-        <FeatureScreen></FeatureScreen>
-      </FeatureDiv>
-      <div>
-        <h1>M2 Max</h1>
-        <p>
-          The most powerful and efficient chip ever in a pro laptop, M2 Max is
-          engineered to help pros push the boundaries of their ingenuity and
-          creativity. With the same next‑generation 12‑core CPU as M2 Pro, M2
-          Max has twice the memory bandwidth, up to three times the unified
-          memory, and up to 38 GPU cores. So you can render effects, merge
-          massive panoramas, and design extreme 3D geometry on an unprecedented
-          scale.
-        </p>
-        {/* <img src="../wild_beasts.jpg" />
+          <Title size="l">
+            Supercharged by M2 Pro or M2 Max, MacBook Pro takes its power and
+            efficiency further than ever. It delivers exceptional performance
+            whether it’s plugged in or not, and now has even longer battery
+            life. Combined with a stunning Liquid Retina XDR display and all the
+            ports you need — this is a pro laptop without equal.
+          </Title>
+          <TitleIndex>
+            <Title size="xl">Supercharged by</Title>
+          </TitleIndex>
+
+          <Hero>
+            <ContentCenter>
+              <img src="../m2.png" />
+              <GradientPBlue>
+                1 Up to 12-core CPU
+                <br /> Up to 19-core GPU
+                <br /> Up to 32GB unified memory
+                <br />
+                200GB/s memory bandwidth
+              </GradientPBlue>
+            </ContentCenter>
+            <ContentCenter>
+              <img src="../m2_max.png" />
+              <GradientPPurple>
+                12-core CPU <br /> Up to 38-core GPU <br />
+                Up to 96GB unified memory <br /> 400GB/s memory bandwidth
+              </GradientPPurple>
+            </ContentCenter>
+          </Hero>
+
+          <DescWrapper>
+            <Title size="l">
+              Introducing the next generation of Apple silicon for pros: The
+              lightning-fast M2 Pro and the extraordinary M2 Max — the most
+              powerful and efficient chip ever in a pro laptop.
+            </Title>
+            <Button gradient size="xl">
+              Go inside M2 Pro and M2 Max
+            </Button>
+          </DescWrapper>
+
+          <FeatureDiv>
+            <M2wrapper>
+              <Title gradient>M2 Pro</Title>
+              <Title size="l" left>
+                M2 Pro brings power to take on even more demanding projects. The
+                up to 12‑core CPU and next‑generation Neural Engine make pro
+                workflows fly — from sorting and editing thousands of images to
+                running computational fluid dynamics simulations. And the up to
+                19‑core GPU drives a huge boost in graphics performance for both
+                work and play.
+              </Title>
+            </M2wrapper>
+
+            <Feature></Feature>
+            <LaptopM2>
+              <FeatureScreen />
+            </LaptopM2>
+          </FeatureDiv>
+          <FeatureDiv>
+            <M2wrapper>
+              <Title gradient>M2 Max</Title>
+              <Title size="l" left>
+                The most powerful and efficient chip ever in a pro laptop, M2
+                Max is engineered to help pros push the boundaries of their
+                ingenuity and creativity. With the same next‑generation 12‑core
+                CPU as M2 Pro, M2 Max has twice the memory bandwidth, up to
+                three times the unified memory, and up to 38 GPU cores. So you
+                can render effects, merge massive panoramas, and design extreme
+                3D geometry on an unprecedented scale.
+              </Title>
+              
+              {/* <img src="../wild_beasts.jpg" />
         <img src="../screen_processing.jpg" /> */}
-      </div>
+            </M2wrapper>
+            <Feature></Feature>
+            <LaptopM2>
+              <FeatureScreen />
+            </LaptopM2>
+          </FeatureDiv>
+        </>
+      )}
     </Container>
   );
 }

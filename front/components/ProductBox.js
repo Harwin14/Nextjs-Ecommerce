@@ -11,15 +11,29 @@ const moveProductToCart = keyframes`
     opacity: 1;
   }
   50% {
-    transform: translateY(-500px) translateX(0);
+    transform: translateY(-500px) translateX(10vh);
     opacity: 0.5;
   }
+ 
   100% {
     transform: translateY(-100vh) translateX(100vw);
     opacity: 0;
   }
 `;
-
+const specialMoveProductToCart = keyframes`
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-500px) translateX(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-90vh) translateX(40vw);
+    opacity: 0;
+  }
+`;
 const WhiteBox = styled(Link)`
   background-color: #fff;
   box-shadow: 4px 3px 5px 2px rgba(0, 0, 0, 0.5);
@@ -42,6 +56,13 @@ const WhiteBox = styled(Link)`
     props.isAddedToCart &&
     css`
       animation: ${moveProductToCart} 1.4s forwards;
+    `}
+  ${(props) =>
+    props.isSpecialProd &&
+    css`
+      /* Atur animasi khusus untuk produk ke-3 dan ke-4 di sini */
+      /* Misalnya, Anda dapat menambahkan animasi khusus untuk produk ke-3 dan ke-4 */
+      animation: ${specialMoveProductToCart} 1.4s forwards;
     `}
 `;
 const Title = styled(Link)`
@@ -83,15 +104,28 @@ const Price = styled.div`
     text-align: left;
   }
 `;
-export default function ProductBox({ _id, title, desc, price, images }) {
+export default function ProductBox({
+  _id,
+  title,
+  desc,
+  price,
+  images,
+  isSpecial,
+}) {
   const { addProduct } = useContext(CartContext);
   const url = `/product/${_id}`;
 
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-
+  const [isSpecialProd, setisSpecialProd] = useState(false);
   const addToCart = () => {
     addProduct(_id);
     setIsAddedToCart(true);
+    if (isSpecial) {
+      setisSpecialProd(true);
+      setTimeout(() => {
+        setisSpecialProd(false);
+      }, 1000);
+    }
     setTimeout(() => {
       setIsAddedToCart(false);
     }, 1000);
@@ -99,7 +133,7 @@ export default function ProductBox({ _id, title, desc, price, images }) {
 
   return (
     <ProductWrapper>
-     <WhiteBox href={url} isAddedToCart={isAddedToCart}>
+      <WhiteBox href={url} isAddedToCart={isAddedToCart} isSpecialProd={isSpecialProd}>
         <div>
           <img src={images?.[0]} />
         </div>

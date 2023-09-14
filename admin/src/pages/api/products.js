@@ -1,8 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import clientPromise from "@/lib/mongodb";
-import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import { mongooseConnect } from "@/lib/mongoose";
 import { isAdminRequest } from "./auth/[...nextauth]";
 
 export default async function handler(req, res) {
@@ -12,7 +11,7 @@ export default async function handler(req, res) {
     
     if (method === "GET") {
         if (req.query?.id) {
-            res.json(await Product.findOne({ _id: req.query.id }));
+            res.json(await Product.findOne({ _id:req.query.id }));
         } else {
             res.json(await Product.find());
         }

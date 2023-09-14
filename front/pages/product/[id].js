@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import { CartContext } from "@/components/CartContext";
 import Center from "@/components/Center";
 import Header from "@/components/Header";
 import ProductImages from "@/components/ProductImages";
@@ -8,7 +9,7 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
 const ColWrapper = styled.div`
@@ -198,9 +199,9 @@ const FeatureDiv = styled.div`
   Title {
     text-align: center;
   }
-  @media screen and(min-heigh:568px) {
-    margin: 300px;
-  }
+  // @media screen and(min-heigh:568px) {
+  //   margin: 300px;
+  // }
 `;
 const Feature = styled.div`
   background-color: #000;
@@ -212,10 +213,10 @@ const Feature = styled.div`
   grid-template-columns: 1fr;
   margin: 80px 400px;
   padding: 300px;
-  @media screen and(min-heigh:568px) {
-    padding: 200px;
-    background-size: 100%;
-  }
+  // @media screen and(min-heigh:568px) {
+  //   padding: 200px;
+  //   background-size: 100%;
+  // }
 `;
 
 const LaptopM2 = styled.div`
@@ -243,6 +244,18 @@ const FeatureScreen = styled.div`
 export default function ProductPage({ product }) {
   const [isFeatured, setIsFeatured] = useState(false);
   const router = useRouter();
+  const { addProduct } = useContext(CartContext);
+
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  const addToCart = () => {
+    addProduct(product._id);
+    setIsAddedToCart(true);
+    setTimeout(() => {
+      setIsAddedToCart(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     const featured = router.asPath.includes("64a66001ead2f50ac344e9c8");
     if (featured) {
@@ -257,7 +270,7 @@ export default function ProductPage({ product }) {
       </StickyHeader>
       <Center>
         <ColWrapper featured={isFeatured}>
-          <WhiteBox>
+          <WhiteBox isAddedToCart={isAddedToCart}>
             <ProductImages images={product.images} />
           </WhiteBox>
           <div>
@@ -284,7 +297,12 @@ export default function ProductPage({ product }) {
             <PriceRow>
               <Price>${product.price}</Price>
               <div>
-                <Button primary>Add to cart</Button>
+              <Button
+            primary
+            onClick={addToCart}
+            isAddedToCart={isAddedToCart}
+          >   Add to cart
+          </Button>
               </div>
             </PriceRow>
           </div>

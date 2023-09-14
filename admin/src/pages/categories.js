@@ -217,12 +217,14 @@ const Categories = ({ swal }) => {
                       onClick={() => editCategory(category)}
                       className="btn-edit mr-1"
                     >
+                      <i class="bx bxs-edit"></i>
                       Edit
                     </button>
                     <button
                       onClick={() => deleteCategory(category)}
                       className="btn-red"
                     >
+                      <i class="bx bxs-trash"></i>
                       Delete
                     </button>
                   </td>

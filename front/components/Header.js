@@ -22,12 +22,15 @@ const glowingAnimation = keyframes`
 `;
 const StyledHeader = styled.header`
   background-color: #222;
+  position: relative;
 `;
 const Logo = styled(Link)`
   color: #fff;
   text-decoration: none;
   position: relative;
   z-index: 3;
+  text-align: center;
+
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -46,6 +49,7 @@ const StyledNav = styled.nav`
   right: 0;
   padding: 70px 20px 20px;
   background-color: #222;
+
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
@@ -112,21 +116,48 @@ const NavLink = styled(Link)`
   color: #aaa;
   text-decoration: none;
   padding: 10px 5px;
-  transition: border-bottom 0.3s ease; /* Pindahkan properti transition ke sini */
-  border-bottom: ${(props) => (props.active ? "2px solid white" : "none")};
+  transition: border-bottom 0.3s ease;
+  text-align: center;
+  border-bottom: ${(props) => (props.active ? "0.3rem solid white" : "none")};
   @media screen and (min-width: 768px) {
     padding: 0;
-    border-bottom: ${(props) => (props.active ? "2px solid white" : "none")};
-    transition: border-bottom 0.3s ease; /* Biarkan properti transition di sini */
+    border-bottom: ${(props) => (props.active ? "0.3rem solid white" : "none")};
+    &::after {
+      content: "";
+      display: ${(props) => (props.active ? "none" : "block")};
+      border-bottom: 0.3rem solid white;
+      transform: scaleX(0);
+      transition: 0.2s linear;
+    }
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
-  &:hover {
-    color: #fff;
-    border-bottom: 2px solid #fff;
-    max-width: 100%;
-  }
-
 `;
+// const NavLink = styled(Link)`
+//   display: inline-block;
+//   color: #aaa;
+//   text-decoration: none;
+//   padding: 10px 5px;
 
+//   border-bottom: ${(props) => (props.active ? "0.3rem solid white" : "none")};
+//   @media screen and (min-width: 768px) {
+//     border-box: box-sizing;
+//     padding: 0;
+//     border-bottom: ${(props) => (props.active ? "0.3rem solid white" : "none")};
+//   }
+
+//   &::after {
+//     content: "";
+//     display: ${(props) => (props.active ? "none" : "block")};;
+//     border-bottom: 0.3rem solid white;
+//     transform: scaleX(0);
+//     transition: 0.2s linear;
+//   }
+//   &:hover::after {
+//     transform: scaleX(1);
+//   }
+// `;
 const NavButton = styled.button`
   background-color: transparent;
   width: 30px;
@@ -177,6 +208,7 @@ const StyledButton = styled(Button)`
     opacity: 0;
   }
 `;
+
 export default function Header() {
   const { cartProducts } = useContext(CartContext);
   const [mobileNavActive, setMobileNavActive] = useState(false);

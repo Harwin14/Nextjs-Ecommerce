@@ -299,7 +299,7 @@ export default function ProductPage({ product }) {
               <div>
               <Button
             primary
-            onClick={addToCart}
+            onClick={addToCart} 
             isAddedToCart={isAddedToCart}
           >   Add to cart
           </Button>
